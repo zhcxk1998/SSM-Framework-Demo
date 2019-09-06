@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import softwaretest.controller.viewobject.UserInfoVO;
+import softwaretest.entity.LoginInfo;
 import softwaretest.entity.UserInfo;
 import softwaretest.error.BusinessException;
 import softwaretest.error.EmBusinessError;
@@ -49,6 +50,14 @@ public class UserInfoController extends BaseController {
             return userInfoVO;
         }).collect(Collectors.toList());
         return CommonReturnType.create(userInfoModelList);
+    }
+
+    /* 获取全部用户的信息 */
+    @GetMapping("/login_list")
+    @ResponseBody
+    public CommonReturnType getLoginList() {
+        List<LoginInfo> loginInfoList = userInfoService.getLoginList();
+        return CommonReturnType.create(loginInfoList);
     }
 
     /* 根据id获取用户信息 */

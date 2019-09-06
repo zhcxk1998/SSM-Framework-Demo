@@ -22,27 +22,6 @@ public class BaseController {
     public Object handlerException(HttpServletRequest request, Exception ex) {
         return this.generateResponse(ex);
     }
-//    public ResponseEntity<Object> handlerException(HttpServletRequest request, Exception ex) {
-//        Map<String, Object> responseData = new HashMap<>();
-//        HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-//        if (ex instanceof BusinessException) {
-//            BusinessException businessException = (BusinessException) ex;
-//            responseData.put("errCode", businessException.getErrCode());
-//            responseData.put("errMsg", businessException.getErrMsg());
-//
-//            Map<Integer, HttpStatus> responseStatus = new HashMap<>();
-//            responseStatus.put(401, HttpStatus.UNAUTHORIZED);
-//            responseStatus.put(403, HttpStatus.FORBIDDEN);
-//            responseStatus.put(404, HttpStatus.NOT_FOUND);
-//
-//            httpStatus = responseStatus.get(businessException.getErrCode());
-//        } else {
-//            responseData.put("errCode", EmBusinessError.UNKNOWN_ERROR.getErrCode());
-//            responseData.put("errMsg", EmBusinessError.UNKNOWN_ERROR.getErrMsg());
-//        }
-////        return CommonReturnType.create(responseData, "fail");
-//        return new ResponseEntity<Object>(CommonReturnType.create(responseData, "fail"), httpStatus);
-//    }
 
     /* 处理用户注册失败的情况 */
     @ExceptionHandler(RegisterFailException.class)

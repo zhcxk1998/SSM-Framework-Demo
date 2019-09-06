@@ -1,5 +1,6 @@
 package softwaretest.service;
 
+import softwaretest.entity.LoginInfo;
 import softwaretest.error.BusinessException;
 import softwaretest.service.model.UserInfoModel;
 
@@ -10,6 +11,8 @@ public interface UserInfoService {
     UserInfoModel getUserById(Integer id);
 
     List<UserInfoModel> getUserList();
+
+    List<LoginInfo> getLoginList();
 
     void register(UserInfoModel userInfoModel) throws BusinessException;
 

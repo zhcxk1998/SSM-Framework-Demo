@@ -4,13 +4,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import softwaretest.controller.viewobject.UserInfoVO;
 import softwaretest.entity.LoginInfo;
-import softwaretest.entity.UserInfo;
 import softwaretest.error.BusinessException;
 import softwaretest.error.EmBusinessError;
 import softwaretest.error.NotFoundException;
@@ -18,7 +15,6 @@ import softwaretest.response.CommonReturnType;
 import softwaretest.service.UserInfoService;
 import softwaretest.service.model.UserInfoModel;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -116,9 +112,37 @@ public class UserInfoController extends BaseController {
         /* 将登录凭证加入到用户登录成功的session内 */
         this.httpServletRequest.getSession().setAttribute("IS_LOGIN", true);
         this.httpServletRequest.getSession().setAttribute("LOGIN_USER", userInfoModel);
+        /* 记录用户登录信息 */
+        userInfoService.recordLogin(userInfoModel);
 
         Map<String, String> responseData = new HashMap<>();
         responseData.put("msg", "登陆成功");
+
+        return CommonReturnType.create(responseData);
+    }
+
+    /* 用户修改密码 */
+    @PostMapping("/modify")
+    @ResponseBody
+    public CommonReturnType modifyPassword(@RequestBody Map<String, String> requestBody) throws UnsupportedEncodingException, NoSuchAlgorithmException, BusinessException {
+        String username = requestBody.get("username");
+        String prePassword = requestBody.get("prePassword");
+        String newPassword = requestBody.get("newPassword");
+        String idCard = requestBody.get("idCard");
+
+        /* 入参效验 */
+        if (StringUtils.isEmpty(username) || StringUtils.isEmpty(prePassword) || StringUtils.isEmpty(newPassword) || StringUtils.isEmpty(idCard)) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
+
+        UserInfoModel userInfoModel = userInfoService.validateModify(username, this.encodeBySha1(prePassword), idCard);
+
+        /* 若通过验证，则将加密后的密码覆盖掉原先的密码 */
+        userInfoModel.setEncrptPassword(this.encodeBySha1(newPassword));
+        userInfoService.modifyPassword(userInfoModel);
+
+        Map<String, String> responseData = new HashMap<>();
+        responseData.put("msg", "修改成功");
 
         return CommonReturnType.create(responseData);
     }

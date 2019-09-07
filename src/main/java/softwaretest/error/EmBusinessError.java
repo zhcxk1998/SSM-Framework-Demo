@@ -15,7 +15,10 @@ public enum EmBusinessError implements CommonError {
     USER_LOGIN_FAIL(401, "用户用户名或密码不正确"),
 
     /* 注册用户名已存在 */
-    USER_REGISTER_FAIL(403, "该用户名已存在")
+    USER_REGISTER_FAIL(403, "该用户名已存在"),
+
+    /* 修改密码身份证错误 */
+    USER_MODIFY_FAIL(401, "用户名或密码或身份证不正确")
 
     ;
 

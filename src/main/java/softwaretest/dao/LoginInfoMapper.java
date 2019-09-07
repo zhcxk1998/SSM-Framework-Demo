@@ -11,11 +11,12 @@ public interface LoginInfoMapper {
 
     int insertSelective(LoginInfo record);
 
-    LoginInfo selectByPrimaryKey(Integer id);
-
     int updateByPrimaryKeySelective(LoginInfo record);
 
     int updateByPrimaryKey(LoginInfo record);
 
     List<LoginInfo> selectAll();
+
+    LoginInfo selectByPrimaryKey(Integer id);
+
 }

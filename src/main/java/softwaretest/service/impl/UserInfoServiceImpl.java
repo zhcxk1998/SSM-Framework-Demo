@@ -75,6 +75,7 @@ public class UserInfoServiceImpl implements UserInfoService {
                 || StringUtils.isEmpty(userInfoModel.getIdCard())) {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
+        /* 判断用户名是否已存在 */
         if (userInfoMapper.selectByUsername(userInfoModel.getUserName()) != null) {
             throw new RegisterFailException(EmBusinessError.USER_REGISTER_FAIL);
         }
@@ -105,13 +106,11 @@ public class UserInfoServiceImpl implements UserInfoService {
             throw new UnauthorizedException(EmBusinessError.USER_LOGIN_FAIL);
         }
 
-        recordLogin(userInfoModel);
-
         return userInfoModel;
     }
 
     /* 记录登录成功的信息 */
-    private void recordLogin(UserInfoModel userInfoModel) throws BusinessException {
+    public void recordLogin(UserInfoModel userInfoModel) throws BusinessException {
         if (userInfoModel == null) {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
@@ -120,6 +119,36 @@ public class UserInfoServiceImpl implements UserInfoService {
         loginInfo.setLoginTime(String.valueOf(new Date().getTime()));
 
         loginInfoMapper.insertSelective(loginInfo);
+    }
+
+    @Override
+    public UserInfoModel validateModify(String username, String encrptPassword, String idCard) throws BusinessException {
+        UserInfo userInfo = userInfoMapper.selectByUsername(username);
+        if (userInfo == null) {
+            throw new NotFoundException(EmBusinessError.USER_NOT_EXIST);
+        }
+        UserPassword userPassword = userPasswordMapper.selectByUserId(userInfo.getId());
+        UserInfoModel userInfoModel = convertFromDataObject(userInfo, userPassword);
+
+        if (!StringUtils.equals(encrptPassword, userInfoModel.getEncrptPassword())
+                || !StringUtils.equals(idCard, userInfoModel.getIdCard())) {
+            throw new ModifyFailException(EmBusinessError.USER_MODIFY_FAIL);
+        }
+
+        return userInfoModel;
+    }
+
+    /* 修改密码 */
+    public void modifyPassword(UserInfoModel userInfoModel) throws BusinessException {
+        if (userInfoModel == null) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
+        UserInfo userInfo = convertFromModel(userInfoModel);
+        UserPassword userPassword = convertPasswordFromModel(userInfoModel);
+
+        /* 设置id以便覆盖用户密码信息 */
+        userPassword.setId(userInfo.getId());
+        userPasswordMapper.updateByPrimaryKeySelective(userPassword);
     }
 
     private UserPassword convertPasswordFromModel(UserInfoModel userInfoModel) {

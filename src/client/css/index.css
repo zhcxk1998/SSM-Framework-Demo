@@ -1,0 +1,95 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.login-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+}
+
+.login-info-header {
+  position: relative;
+  display: flex;
+  width: 1000px;
+  height: 50px;
+  margin: 15px 0;
+  color: #333;
+  font-size: 30px;
+  border: #333 2px solid;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.login-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 1000px;
+  height: 600px;
+}
+
+.login-info-wrap {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  margin: 15px 0;
+  color: #333;
+  font-size: 30px;
+  border: #333 2px solid;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.login-info-item {
+  display: flex;
+  align-items: center;
+  width: 25%;
+  height: 50px;
+  padding: 0 10px;
+  border-right: #333 2px solid;
+}
+
+.login-info-item:last-child {
+  width: 50%;
+  border-right: 0;
+}
+
+.paginator-container {
+  overflow-x: scroll;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 30px;
+  width: 1000px;
+  height: 40px;
+  border: #333 2px solid;
+  border-radius: 20px;
+}
+
+.paginator-container::-webkit-scrollbar {
+  display: none
+}
+
+.paginator-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  color: #333;
+  font-weight: bold;
+  border: #333 2px solid;
+  border-radius: 50%;
+  background: #fff;
+}

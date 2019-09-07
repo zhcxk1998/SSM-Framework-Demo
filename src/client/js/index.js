@@ -5,6 +5,7 @@ window.onload = async () => {
   loginInfo = data;
   setLoginInfo(1)
   setPaginator()
+  handlePaginatorClick(0)
 }
 
 fetchLoginList = async () => {
@@ -22,7 +23,7 @@ setLoginInfo = (page) => {
   const end = page * 5;
 
   loginInfo.slice(start, end).map((item) => {
-    var infoNode = document.createElement('div');
+    const infoNode = document.createElement('div');
     const { id, userId, loginTime } = item;
     const loginTimeString = new Date(parseInt(loginTime)).toLocaleString();
     infoNode.setAttribute('class', 'login-info-wrap')
@@ -43,9 +44,9 @@ setLoginInfo = (page) => {
 
 setPaginator = () => {
   const length = Math.ceil(loginInfo.length / 5)
-  var paginatorContainer = $('paginator-container');
+  const paginatorContainer = $('paginator-container');
   Array.from({ length: length }).map((_, index) => {
-    var pageNode = document.createElement('div');
+    const pageNode = document.createElement('div');
     pageNode.setAttribute('class', 'paginator-wrap')
     pageNode.setAttribute('onclick', `handlePaginatorClick(${index})`)
     pageNode.innerHTML = `
@@ -56,5 +57,17 @@ setPaginator = () => {
 }
 
 handlePaginatorClick = (page) => {
+  const pageList = $('paginator-container').children;
+  const currentPage = pageList[page];
+  /* 将所有分页样式还原 */
+  Array.from(pageList).map(page => {
+    page.style.background = '#fff'
+    page.style.color = '#333'
+    page.style.border='#333 2px solid'
+  })
+  currentPage.style.background = '#333'
+  currentPage.style.color = '#fff'
+  currentPage.style.border='#fff 2px solid'
+
   setLoginInfo(page + 1)
 }

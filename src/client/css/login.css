@@ -144,7 +144,20 @@ body,html{
   outline: none;
 }
 
+.action-wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .register-link {
+  text-decoration: none;
+  color: #666;
+  font-weight: bold;
+}
+
+.modify-link {
   text-decoration: none;
   color: #666;
   font-weight: bold;

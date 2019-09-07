@@ -1,0 +1,28 @@
+@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_1394890_i4clc5xsno9.eot?t=1567827541079'); /* IE9 */
+  src: url('//at.alicdn.com/t/font_1394890_i4clc5xsno9.eot?t=1567827541079#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAARoAAsAAAAACSgAAAQaAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqFaIR0ATYCJAMQCwoABCAFhG0HQRvfBxGVnCfIPhLTjT3yf8WAZRDiLK7B8/Db3nMBHRbyImJZiVt/RuGiOn7n1lQzNkHKZl4wx2OexX/o7S2fLCfp8QJYgotQj2/AerWmNshC4QoVb+4DdP8hwIKL6lTIKmDZCgVMyrVCyi7i2XQXSiwHcDsEcJNMAaRGrQYt0NFg+wkg/XpbXdEzL9qSQUFHcCKnashMHOjKJOUqMMP+vXyhmOig4FBhhzbpVbMHVd6b72eqdsimg6Zh3F8Y6J0FKlAA0EACaLQbqq8WQMU92VqjFKCjo8C+1kS+nxkKUdO1YJ1jtv3HU0CcMOwFdomaCu9NaYhkJLgRIGdCHwrAG3KKDhjAL5CSMFEkm+loKKbp8sZ4yWeZpjc+X9iwfceSlKVHSxj7jyerK06UHmicvZuqrLpX03/hQYa6+n6LZe320cnHgydaY0SH6KDOpm0nb5blt0vtvZlobwybRT940PrevZZzN/by9icHt8T45m2yN7boKDy+KQy3J8aDXWnYlC2iBje7jckbUexNnv7G/tsHLd8p7d936yQm3OwV3DJlE+zTK+00KbsmSdrv3291926LYSbnPvEgY1xeda9i5F3bOi/KsyBmzQPGm3IPp9G33e81+fLt3cE9d65MuXRrl73z5sVSq0+YV+WbXDXv0rF3at791bxF8rdk5fzlq8+ec6Q63yyt1qvmzZKTmzd/eVMS9pLNWu73F/en/H/163+Kv3hScUMaWFZDZZUugopRfE3ZMkj4ZZmb1O2bn5STi/vLGBDtM+8JyniyHsWoYoQZco/KlavYLfUqekvbTgpUMsISwwy78Y5K6bZ0kU4jR3ZSVqEIqC5lqnrbttXBKg2CS1Fy59jE6pZVPVF+lbQMJTBlSoBYFUDwCKOk9YvqCZZVepzUdnap0MUZVyDQvHnfAkMFMijguHpv8ajd7dePWFZrGZ+1bIwisD1VWwV6od/q4KHx79mNjy3qt87+Cv90z8s369Gi2i2bTOjriPWNfwHjxPhfMa45RZuamU/TxhZpmPVrDGIGb7rNzQPwD2lCOH/7oKLWloNQUREU8pAEKjqZdI1dABx4KAFOdCqDm/zEZ3uIgBkimgvIxysBweQdFAxOgIrJB11j/4KDaP7BiSlDcNNKIi7pIVuyRXVGJWhBv0BmqHYiIAs3eMKkKxWnZqu8IbdZAcJCRcpGjDXyPo5o70kk4sAxVXAkd8OyJGiYcjTipSLNwS/cC/shz1DVW1AdBlEIiAXQvABkGIgap2cWFtXvn0ASOkoUvGTkRPcGwrRkGwdCPII16DGu1xp5Llu33EmIEATX7OVgiArgCGGk5FUCaPCdchCD4JFuUW444NPp3LrYOz5VvcKLADfs2ZooooomDpy9rVFsR/2zSk2HUJ2kXdjrAQAA') format('woff2'),
+  url('//at.alicdn.com/t/font_1394890_i4clc5xsno9.woff?t=1567827541079') format('woff'),
+  url('//at.alicdn.com/t/font_1394890_i4clc5xsno9.ttf?t=1567827541079') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1394890_i4clc5xsno9.svg?t=1567827541079#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-idcard:before {
+  content: "\e614";
+}
+
+.icon-mima:before {
+  content: "\e690";
+}
+
+.icon-yonghu:before {
+  content: "\e610";
+}

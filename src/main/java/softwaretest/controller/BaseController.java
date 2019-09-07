@@ -47,6 +47,14 @@ public class BaseController {
         return this.generateResponse(ex);
     }
 
+    /* 处理用户注册失败的情况 */
+    @ExceptionHandler(ModifyFailException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ResponseBody
+    public Object handleModifyFailException(HttpServletRequest request, ModifyFailException ex) {
+        return this.generateResponse(ex);
+    }
+
     private Object generateResponse(Exception ex) {
         Map<String, Object> responseData = new HashMap<>();
         if (ex instanceof BusinessException) {

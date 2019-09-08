@@ -30,7 +30,7 @@
         select
         <include refid="Base_Column_List"/>
         from user_info
-        where user_name = #{username,jdbcType=VARCHAR}
+        where BINARY user_name = #{username,jdbcType=VARCHAR}
     </select>
 
     <select id="selectAll" resultMap="BaseResultMap">

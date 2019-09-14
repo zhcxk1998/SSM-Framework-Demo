@@ -2,6 +2,12 @@ let loginInfo;
 
 window.onload = async () => {
   const { data } = await fetchLoginList()
+  if (data.errCode === 401) {
+    alert(data.errMsg)
+    window.location.href = './login.html'
+    return;
+  }
+  
   loginInfo = data;
   setLoginInfo(1)
   setPaginator()
@@ -9,7 +15,7 @@ window.onload = async () => {
 }
 
 fetchLoginList = async () => {
-  return await http('http://localhost:4000/user/login_list', 'GET')
+  return await http('http://localhost:4000/index/login_list', 'GET')
 }
 
 setLoginInfo = (page) => {
@@ -63,11 +69,11 @@ handlePaginatorClick = (page) => {
   Array.from(pageList).map(page => {
     page.style.background = '#fff'
     page.style.color = '#333'
-    page.style.border='#333 2px solid'
+    page.style.border = '#333 2px solid'
   })
   currentPage.style.background = '#333'
   currentPage.style.color = '#fff'
-  currentPage.style.border='#fff 2px solid'
+  currentPage.style.border = '#fff 2px solid'
 
   setLoginInfo(page + 1)
 }

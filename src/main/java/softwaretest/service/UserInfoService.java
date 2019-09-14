@@ -12,8 +12,6 @@ public interface UserInfoService {
 
     List<UserInfoModel> getUserList();
 
-    List<LoginInfo> getLoginList();
-
     void register(UserInfoModel userInfoModel) throws BusinessException;
 
     void recordLogin(UserInfoModel userInfoModel) throws BusinessException;

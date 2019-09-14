@@ -48,14 +48,6 @@ public class UserInfoController extends BaseController {
         return CommonReturnType.create(userInfoModelList);
     }
 
-    /* 获取全部用户的信息 */
-    @GetMapping("/login_list")
-    @ResponseBody
-    public CommonReturnType getLoginList() {
-        List<LoginInfo> loginInfoList = userInfoService.getLoginList();
-        return CommonReturnType.create(loginInfoList);
-    }
-
     /* 根据id获取用户信息 */
     @GetMapping("/{id}")
     @ResponseBody

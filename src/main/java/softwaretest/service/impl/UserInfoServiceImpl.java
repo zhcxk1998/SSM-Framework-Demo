@@ -60,11 +60,6 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public List<LoginInfo> getLoginList() {
-        return loginInfoMapper.selectAll();
-    }
-
-    @Override
     @Transactional
     public void register(UserInfoModel userInfoModel) throws BusinessException {
         if (userInfoModel == null) {

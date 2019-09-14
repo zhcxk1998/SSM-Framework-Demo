@@ -47,6 +47,14 @@ public class BaseController {
         return this.generateResponse(ex);
     }
 
+    /* 处理用户未登录的情况 */
+    @ExceptionHandler(NotLoginException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ResponseBody
+    public Object handleNotLoginException(HttpServletRequest request, NotLoginException ex) {
+        return this.generateResponse(ex);
+    }
+
     /* 处理用户注册失败的情况 */
     @ExceptionHandler(ModifyFailException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)

@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller("userInfo")
-@RequestMapping("/user")
+@RequestMapping("/users")
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 public class UserInfoController extends BaseController {
 
@@ -73,12 +73,12 @@ public class UserInfoController extends BaseController {
     public CommonReturnType userRegister(@RequestBody Map<String, String> requestBody) throws UnsupportedEncodingException, NoSuchAlgorithmException, BusinessException {
         String username = requestBody.get("username");
         String password = requestBody.get("password");
-        String idCard = requestBody.get("idCard");
+//        String idCard = requestBody.get("idCard");
 
         UserInfoModel userInfoModel = new UserInfoModel();
         userInfoModel.setUserName(username);
         userInfoModel.setEncrptPassword(this.encodeBySha1(password));
-        userInfoModel.setIdCard(idCard);
+//        userInfoModel.setIdCard("123");
 
         userInfoService.register(userInfoModel);
 

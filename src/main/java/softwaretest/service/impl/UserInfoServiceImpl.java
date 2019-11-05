@@ -37,6 +37,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     public UserInfoModel getUserById(Integer id) {
         /* 调用UserInfoMapper获取到对应的用户对象 */
         UserInfo userInfo = userInfoMapper.selectByPrimaryKey(id);
+        System.out.println(userInfo.getUserName());
         if (userInfo == null) {
             return null;
         }
@@ -66,10 +67,10 @@ public class UserInfoServiceImpl implements UserInfoService {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
         if (StringUtils.isEmpty(userInfoModel.getUserName())
-                || StringUtils.isEmpty(userInfoModel.getEncrptPassword())
-                || StringUtils.isEmpty(userInfoModel.getIdCard())) {
+                || StringUtils.isEmpty(userInfoModel.getEncrptPassword())) {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
+
         /* 判断用户名是否已存在 */
         if (userInfoMapper.selectByUsername(userInfoModel.getUserName()) != null) {
             throw new RegisterFailException(EmBusinessError.USER_REGISTER_FAIL);
@@ -81,7 +82,6 @@ public class UserInfoServiceImpl implements UserInfoService {
 
         /* 设置用户信息表对应的id，以便用户密码表中能正确设置user_id的外键 */
         userInfoModel.setId(userInfo.getId());
-
 
         UserPassword userPassword = convertPasswordFromModel(userInfoModel);
         userPasswordMapper.insertSelective(userPassword);
@@ -102,6 +102,10 @@ public class UserInfoServiceImpl implements UserInfoService {
         }
 
         return userInfoModel;
+    }
+
+    public int login(String username, String encriptPassword) {
+        return 1;
     }
 
     /* 记录登录成功的信息 */

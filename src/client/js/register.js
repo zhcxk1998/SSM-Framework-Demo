@@ -3,7 +3,7 @@ submit = async () => {
   const password = $('password').value;
   const idCard = $('idCard').value;
 
-  const { status, data } = await http('http://localhost:4000/user/register', 'POST', { username, password, idCard })
+  const { status, data } = await http('http://localhost:4000/users/register', 'POST', { username, password, idCard })
   switch (status) {
     case 'success':
       alert(data.msg)

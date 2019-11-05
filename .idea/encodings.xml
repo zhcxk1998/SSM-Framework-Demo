@@ -2,5 +2,10 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/test/demo/NumberTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/test/softwaretest/controller/UserInfoControllerTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/test/softwaretest/controller/UserInfoControllerTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/test/softwaretest/service/impl/UserInfoServiceImplTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/test/test/softwaretest/service/impl/UserInfoServiceImplTestTest.java" charset="UTF-8" />
   </component>
 </project>

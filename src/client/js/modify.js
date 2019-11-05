@@ -3,7 +3,7 @@ submit = async () => {
   const prePassword = $('prePassword').value;
   const newPassword = $('newPassword').value;
   const idCard = $('idCard').value;
-  const { status, data } = await http('http://localhost:4000/user/modify', 'POST', { username, prePassword, newPassword, idCard })
+  const { status, data } = await http('http://localhost:4000/users/modify', 'POST', { username, prePassword, newPassword, idCard })
   switch (status) {
     case 'success':
       alert(data.msg)
